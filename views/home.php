@@ -1,14 +1,23 @@
-<a href="<?php echo BASE_URL; ?>home/add">Adicionar Produto</a> <br><br>
-
-<a href="<?php echo BASE_URL; ?>relatorio">Relatório</a> <br><br>
-
-<fieldset>
+    <br>
     <form method="get">
-        <input type="text" id="busca" name="busca" value="<?php echo (!empty($_GET['busca']))?$_GET['busca']:''; ?>" placeholder="Buscar por Codigo de barras ou Nome do produto" style="width:100%;height:35px;font-size:18px;">
-    </form>
-</fieldset>
-<br><br>
+        <div class="row padMar">
+            <div class="col padMar">
+                <div class="input-group">
+                    <div class="input-group-prepend">
 
+                    </div>
+                        <input class="form-control autocomplete" type="text" id="busca" name="busca" value="<?php echo (!empty($_GET['busca']))?$_GET['busca']:''; ?>" placeholder="Buscar por Codigo de barras ou Nome do produto">
+                            <div class="input-group-append">
+                                <button class="btn btn-warning" type="submit">
+                                    <i class="fa fa-search">
+
+                                    </i>
+                                </button>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </form>
 <table border="1" width="100%">
     <tr>
         <th>Cód.</th>

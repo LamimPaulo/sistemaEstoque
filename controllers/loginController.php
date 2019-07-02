@@ -26,4 +26,12 @@ class loginController extends controller {
 
         $this->loadView('login', $data);
     }
+
+    public function sair() {
+        unset($_SESSION['token']);
+        header("Location: ".BASE_URL."login");
+        exit;
+    }
+
+    
 }
