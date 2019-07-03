@@ -1,3 +1,10 @@
+<?php if (!empty($warning)):?>
+    <div class="alert alert-warning beautiful" role="alert">
+        <div>
+            <strong>Oops!   </strong><?php echo $warning; ?>
+        </div>        
+    </div>
+<?php endif;?>
 
 <br><br>
 <div class="container">
@@ -18,15 +25,15 @@
                 </div>
             <div class="form-group has-feedback">
                 <label for="price">Preço</label>
-                <input class="form-control inp" type="text" name="price" value="<?php echo $info['price'] ?>" required style="font-size: 21px;" />
+                <input class="form-control inp" type="text" name="price" value="<?php echo number_format($info['price'], 2,',', '.') ?>" required style="font-size: 21px;" />
             </div>
             <div class="form-group has-feedback">
                 <label for="quantity">Quantidade</label>
-                <input class="form-control inp" type="number" name="quantity" value="<?php echo $info['quantity'] ?>" required style="font-size: 21px;" />
+                <input class="form-control inp" type="text" name="quantity" value="<?php echo number_format($info['quantity'], 2, ',', '.') ?>" required style="font-size: 21px;" />
             </div>
             <div class="form-group has-feedback">
                 <label for="min_quantity">Quantidade Minima</label>
-                <input class="form-control inp" type="number" name="min_quantity" value="<?php echo $info['min_quantity'] ?>" required />
+                <input class="form-control inp" type="text" name="min_quantity" value="<?php echo number_format($info['min_quantity'], 2, ',', '.') ?>" required />
             </div>
 
             <div class="form-group">

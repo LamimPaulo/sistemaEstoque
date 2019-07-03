@@ -1,3 +1,11 @@
+<?php if (!empty($warning)):?>
+    <div class="alert alert-warning beautiful" role="alert">
+        <div>
+            <strong>Oops!   </strong><?php echo $warning; ?>
+        </div>        
+    </div>
+<?php endif;?>
+
 <br><br>
 <div class="container">
     <form id="contactForm" method="post" class="form">
@@ -21,11 +29,11 @@
             </div>
             <div class="form-group has-feedback">
                 <label for="quantity">Quantidade</label>
-                <input class="form-control inp" type="number" name="quantity" required style="font-size: 21px;" />
+                <input class="form-control inp" type="text" name="quantity" required style="font-size: 21px;" />
             </div>
             <div class="form-group has-feedback">
                 <label for="min_quantity">Quantidade Minima</label>
-                <input class="form-control inp" type="number" name="min_quantity" required />
+                <input class="form-control inp" type="text" name="min_quantity" required />
             </div>
 
             <div class="form-group">

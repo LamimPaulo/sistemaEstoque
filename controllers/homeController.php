@@ -41,18 +41,23 @@ class homeController extends Controller {
             BASE_URL => 'Voltar'
         ));
         $p = new Products();
+        $filters = new FiltersHelper();
 
         if (!empty($_POST['cod'])) {
-            $cod = $_POST['cod'];
-            $name = $_POST['name'];
-            $price = $_POST['price'];
-            $quantity = $_POST['quantity'];
-            $min_quantity = $_POST['min_quantity'];
+            $cod = filter_input(INPUT_POST, 'cod', FILTER_VALIDATE_INT);
+            $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+            $price = $filters->filter_post_float('price');
+            $quantity = $filters->filter_post_float('quantity');
+            $min_quantity = $filters->filter_post_float('min_quantity');
 
-            $p->addProduct($cod, $name, $price, $quantity, $min_quantity);
-
-            header("Location: ".BASE_URL);
-            exit;
+            if ($cod && $name && $price && $quantity && $min_quantity) {
+                    $p->addProduct($cod, $name, $price, $quantity, $min_quantity);
+        
+                    header("Location: ".BASE_URL);
+                    exit;
+            } else{
+                $data['warning'] = 'Digite os campos Corretamente.';
+            }
         }
 
         $this->loadTemplate('add', $data);
@@ -65,18 +70,23 @@ class homeController extends Controller {
             )
         );
         $p = new Products();
+        $filters = new FiltersHelper();
 
         if (!empty($_POST['cod'])) {
-            $cod = $_POST['cod'];
-            $name = $_POST['name'];
-            $price = $_POST['price'];
-            $quantity = $_POST['quantity'];
-            $min_quantity = $_POST['min_quantity'];
+            $cod = filter_input(INPUT_POST, 'cod', FILTER_VALIDATE_INT);
+            $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+            $price = $filters->filter_post_float('price');
+            $quantity = $filters->filter_post_float('quantity');
+            $min_quantity = $filters->filter_post_float('min_quantity');
 
-            $p->editProduct($cod, $name, $price, $quantity, $min_quantity, $id);
-            
-            header("Location: ".BASE_URL);
-            exit;
+            if ($cod && $name && $price && $quantity && $min_quantity) {
+                $p->editProduct($cod, $name, $price, $quantity, $min_quantity, $id);
+                
+                header("Location: ".BASE_URL);
+                exit;
+            } else {
+                $data['warning'] = 'Digite os campos Corretamente.';
+            }
         }
 
         $data['info'] = $p->getProduct($id);
